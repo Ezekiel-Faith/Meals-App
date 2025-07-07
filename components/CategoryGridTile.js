@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import {
   Dimensions,
   Platform,
@@ -9,8 +8,6 @@ import {
 } from 'react-native';
 
 export default function CategoryGridTile({ title, color, onPress }) {
-  const navigation = useNavigation();
-
   return (
     <View style={styles.gridItem}>
       <Pressable
