@@ -3,7 +3,7 @@ import { use } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function MealsOverviewScreen({ route }) {
-  const route = useRoute(); //can be used as an alternative to route prop
+  // const route = useRoute(); //can be used as an alternative to route prop
   const catId = route.params.categoryId;
 
   return (
