@@ -1,14 +1,27 @@
-import { useRoute } from '@react-navigation/native';
-import { use } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// import { useRoute } from '@react-navigation/native';
+import { StyleSheet, FlatList, View } from 'react-native';
+import { MEALS } from '../data/dummy-data';
+import MealItem from '../components/MealIteam';
 
 export default function MealsOverviewScreen({ route }) {
   // const route = useRoute(); //can be used as an alternative to route prop
   const catId = route.params.categoryId;
 
+  const displayedMeals = MEALS.filter((mealItem) => {
+    return mealItem.categoryIds.indexOf(catId) >= 0;
+  });
+
+  function renderingMealItem(itemData) {
+    return <MealItem title={itemData.item.title} />;
+  }
+
   return (
-    <View styles={styles.container}>
-      <Text>Meals Overview Screen - {catId}</Text>
+    <View style={styles.container}>
+      <FlatList
+        data={displayedMeals}
+        keyExtractor={(item) => item.id}
+        renderItem={renderingMealItem}
+      />
     </View>
   );
 }
