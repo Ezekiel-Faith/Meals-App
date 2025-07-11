@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import {
   Image,
   Platform,
@@ -8,17 +9,28 @@ import {
 } from 'react-native';
 
 export default function MealItem({
+  id,
   title,
   imageUrl,
   duration,
   affordability,
   complexity,
 }) {
+  const navigation = useNavigation();
+
+  function selectMealHandler() {
+    navigation.navigate('Meal Detail', {
+      mealId: id,
+      mealTitle: title,
+    });
+  }
+
   return (
     <View style={styles.mealItem}>
       <Pressable
         android_ripple={{ color: '#ccc' }}
         style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
+        onPress={selectMealHandler}
       >
         <View>
           <View>
