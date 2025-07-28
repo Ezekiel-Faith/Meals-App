@@ -28,7 +28,6 @@ export default function MealDetailScreen({ route, navigation }) {
     } else {
       favoriteMealsCtx.addFavorite(mealId);
     }
-    console.log('Header button pressed!');
   }
 
   useLayoutEffect(() => {
@@ -43,7 +42,7 @@ export default function MealDetailScreen({ route, navigation }) {
         );
       },
     });
-  }, [navigation, changeFavoriteStatusHandler]);
+  }, [navigation, changeFavoriteStatusHandler, mealIsFav]);
 
   return (
     <ScrollView style={{ marginBottom: 32 }}>
